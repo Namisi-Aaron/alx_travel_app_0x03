@@ -79,6 +79,9 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 
 CHAPA_SECRET = os.getenv('CHAPA_SECRET_KEY')
 
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
 
 
 # Database
