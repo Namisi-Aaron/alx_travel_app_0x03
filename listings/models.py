@@ -89,6 +89,7 @@ class Booking(models.Model):
         db_table = 'booking'
         verbose_name = 'Booking'
         ordering = ['-created_at']
+        unique_together = ('listing_id', 'user_id', 'start_date', 'end_date')
     
     objects = models.Manager()
 
