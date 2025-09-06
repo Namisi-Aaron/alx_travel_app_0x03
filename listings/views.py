@@ -13,7 +13,7 @@ from .serializers import (
     ListingSerializer, BookingSerializer,
     ReviewSerializer, UserSerializer
 )
-from listings.tasks import send_booking_email
+# from listings.tasks import send_booking_email
 
 load_dotenv()
 
@@ -47,18 +47,18 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 
-    def perform_create(self, serializer):
-        booking = serializer.save()
+    # def perform_create(self, serializer):
+    #     booking = serializer.save()
 
-        # Trigger email notification
-        send_booking_email.delay(
-            user_email=booking.user.email,
-            listing_title=booking.listing_id.name,
-            start_date=booking.start_date,
-            end_date=booking.end_date,
-            total_price=booking.total_price
-        )
-        return super().perform_create(serializer)
+    #     # Trigger email notification
+    #     send_booking_email.delay(
+    #         user_email=booking.user.email,
+    #         listing_title=booking.listing_id.name,
+    #         start_date=booking.start_date,
+    #         end_date=booking.end_date,
+    #         total_price=booking.total_price
+    #     )
+    #     return super().perform_create(serializer)
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
